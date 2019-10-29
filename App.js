@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -25,10 +26,12 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App: () => React$Node = () => {
+  const [hello, setHello] = useState(false);
+  const [world, setWorld] = useState(false);
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
+      <SafeAreaView testID="welcome">
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
@@ -39,6 +42,18 @@ const App: () => React$Node = () => {
             </View>
           )}
           <View style={styles.body}>
+            <TouchableOpacity
+              testID="hello_button"
+              onPress={() => setHello(true)}>
+              <Text>Hello</Text>
+            </TouchableOpacity>
+            {hello ? <Text>Hello!!!</Text> : null}
+            <TouchableOpacity
+              testID="world_button"
+              onPress={() => setWorld(true)}>
+              <Text>World</Text>
+            </TouchableOpacity>
+            {world ? <Text>World!!!</Text> : null}
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>

@@ -27,5 +27,18 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/ReactNativeSvgTests/Build/Products/Debug-iphonesimulator/ReactNativeSvgTests.app",
+        "build": "xcodebuild -workspace ios/ReactNativeSvgTests.xcworkspace -scheme ReactNativeSvgTests -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build/ReactNativeSvgTests",
+        "type": "ios.simulator",
+        "device": {
+          "type": "iPhone 11"
+        }
+      }
+    },
+    "test-runner": "jest"
   }
 }
